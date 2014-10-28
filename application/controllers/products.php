@@ -13,6 +13,13 @@
  */
 class Products extends CI_Controller {
     public function index() {
-        //$this->load->
+        $this->load->view("product_lookup");
+    }
+    
+    public function find() {
+        $userType = $this->input->get('PRODUCT_TYPE');
+        $this->load->model('Product_model');
+        $data['query'] = $this->Product_model->lookup($userType);
+        $this->load->view('product_display', $data);
     }
 }

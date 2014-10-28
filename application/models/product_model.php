@@ -14,16 +14,24 @@
 class Product_model extends CI_Model {
     function __construct() {
         parent::__construct();
-        $this->load->database();
     }
     
     public function lookup($productType) {
-        $this->db->where('name', $productType);
-        $results = $this->db->get('producttype');
-        $returnData = array();
-        foreach ($results->result() as $value) {
-            $returnData[] = $value->name;
-        }
-        return $returnData;
+        return [$productType, "TV", "Radio", "PC", "Notebook", "Phone"];
     }
+    
+//    function __construct() {
+//        parent::__construct();
+//        $this->load->database();
+//    }
+//    
+//    public function lookup($productType) {
+//        $this->db->where('name', $productType);
+//        $results = $this->db->get('producttype');
+//        $returnData = array();
+//        foreach ($results->result() as $value) {
+//            $returnData[] = $value->name;
+//        }
+//        return $returnData;
+//    }
 }
