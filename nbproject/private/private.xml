@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/libraries/authlib.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/controllers/auth.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/models/user.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/controllers/welcome.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/views/login_view.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/views/myview.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/views/register_view.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/config/config.php</file>
+            <file>file:/E:/xampp/htdocs/AWTweb/application/config/autoload.php</file>
+        </group>
     </open-files>
 </project-private>
