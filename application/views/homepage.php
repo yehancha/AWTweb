@@ -1,1 +1,1 @@
-Welcome, <?php echo($name) ?>!
+Welcome, <?php echo($name) ?>! <a href="/awtweb/index.php/auth/logout">Logout!</a>

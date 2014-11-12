@@ -45,6 +45,11 @@ class User extends CI_Model {
         $this->db->insert('logins', array('name' => $row['name'], 'session_id' => $session_id));
         return $res->row_array();
     }
+    
+    function logout() {
+        $session_id = $this->session->userdata('session_id');
+        $this->db->delete('logins', array('session_id' => $session_id));
+    }
 
     function is_loggedin() {
         $session_id = $this->session->userdata('session_id');

@@ -37,6 +37,10 @@ class Authlib {
         }
         return $this->ci->user->login($user, $pwd);
     }
+    
+    public function logout() {
+        $this->ci->user->logout();
+    }
 
     public function is_loggedin() {
         return $this->ci->user->is_loggedin();
