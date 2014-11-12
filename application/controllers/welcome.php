@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
             $this->load->helper('url');
             redirect('/auth/login');
         }
-        $this->load->view('myview', array('name' => $loggedin));
+        $this->load->view('homepage', array('name' => $loggedin));
     }
 
 }
