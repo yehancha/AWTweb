@@ -11,24 +11,42 @@
  *
  * @author yehancha
  */
+
+include_once 'StudentData.php';
+
 class Student extends CI_Model {
 
     public function getById() {
         // just some dummy data for now
-        return array('UG', 'Ly', 'Zo:ltan', 'BSc Computer Science');
+//        return array('mode' => 'UG','firstname' => 'Ly','lastname' => 'Zoltan','course' => 'BSc Computer Science');
+        
+        $student = new StudentData();
+        $student->firstName = 'Ly';
+        $student->lastName = 'Zoltan';
+        $student->level = 6;
+        return $student;
     }
 
     public function getById_xml($sid) {
         // create DOMDocument object
         $root = new DOMDocument;
-        // create root student node and add it to document DOM
-        $student = $root->createElement("student");
-        $root->appendChild($student);
-        // now create firstname and lastname nodes and add them to root student node
+        $class = $root->createElement("class");
+        $root->appendChild($class);
+        
+        $student1 = $root->createElement("student");
+        $class->appendChild($student1);
         $firstname = $root->createElement("firstname", "Ly");
-        $lastname = $root->createElement("lastname", "Zo:<ltan");
-        $student->appendChild($firstname);
-        $student->appendChild($lastname);
+        $lastname = $root->createElement("lastname", "Zoltan");
+        $student1->appendChild($firstname);
+        $student1->appendChild($lastname);
+        
+        $student2 = $root->createElement("student");
+        $class->appendChild($student2);
+        $firstname = $root->createElement("firstname", "Bob");
+        $lastname = $root->createElement("lastname", "Smith");
+        $student2->appendChild($firstname);
+        $student2->appendChild($lastname);
+        
         return $root;
     }
 

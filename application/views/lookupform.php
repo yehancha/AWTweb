@@ -26,11 +26,45 @@
 
     $('#findsubmit').click(function() {
         $.get("/awtweb/index.php/find/lookupById_xml", { id : $('#id').val() }, function(data) {
-            var fname = $('firstname', data).text();
-            var lname = $('lastname', data).text();
-            $('#result').html('The student\'s name is ' + fname + ' ' + lname);
+//            var fname = $('firstname', data).text();
+//            var lname = $('lastname', data).text();
+//            $('#result').html('The student\'s name is ' + fname + ' ' + lname);
+//            
+//            $('#result').html('First name: ' + data.firstName + ' Last name: ' + data.lastName);
+
+            // get the XSLT file and load it into a XML DOM object
+            var xslobj= getXslObj(); // see next slide for code
+            // code to load XSLT - different for IE, compared with ALL other browsers! %$@*! IE!
+            if (window.ActiveXObject) {
+                ex=data.transformNode(xslobj);
+                $('#result').html(ex);
+            }
+            // code for Mozilla, Firefox, Opera, etc.
+            else if (document.implementation && document.implementation.createDocument) {
+                xsltProcessor=new XSLTProcessor();
+                xsltProcessor.importStylesheet(xslobj);
+                resultDocument = xsltProcessor.transformToFragment(data,document);
+                $('#result').append(resultDocument);
+            }
         });
         return false;
     });
+
+    function getXslObj()
+    {
+        var xslobj= null;
+        $.ajax({
+            url: "/awtweb/xsl/student.xsl",
+            success: function(xsldata) {
+                xslobj = xsldata;
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus);        
+            },
+            async: false, // why? see below
+            dataType: "xml"
+        });
+        return xslobj;
+    }
 </script>
 </body> </html>

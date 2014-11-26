@@ -38,5 +38,12 @@ class Find extends CI_Controller {
         // the saveXML() method on a DOMDocument object outputs the XML in string form...
         echo $studentxml->saveXML();
     }
+    
+    function lookupById_json() {
+        $student_id = $this->input->post('id');
+        $student = $this->student->getById($student_id);
+        $this->output->set_content_type('text/json');
+        echo json_encode($student); // we turn the PHP array into a JSON string
+    }
 
 }
