@@ -40,4 +40,34 @@ class Book_model extends CI_Model {
         }
         return $books;
     }
+    
+    function insert($type, $genre_id, $subgenre_id, $title) {
+        $this->db->insert('book', array(
+            'type' => $type,
+            'genre_id' => $genre_id,
+            'subgenre_id' => $subgenre_id,
+            'title' => $title
+        ));
+        return true;
+    }
+    
+    function delete($type, $genre_id, $subgenre_id) {
+        $where_clouses = array();
+        if ($type != '') {
+            $where_clouses['type'] = $type;
+        }
+        if ($genre_id != '') {
+            $where_clouses['genre_id'] = $genre_id;
+        }
+        if ($subgenre_id != '') {
+            $where_clouses['subgenre_id'] = $subgenre_id;
+        }
+        $res = null;
+        if (count($where_clouses) > 0) {
+            $res = $this->db->delete('book', $where_clouses);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
